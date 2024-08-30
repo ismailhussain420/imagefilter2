@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image Filter</title>
+</head>
+<style>
+    .nav{
+        background-color: red;
+        color:#fff;
+        padding:10px;
+        text-align: center;
+    }
+    .nav ul li{
+        display: inline;
+        margin-left:20px;
+        font-size:18px;
+        text-transform: uppercase;
+        cursor: pointer;
+ 
+    }
+    .nav ul li.active{
+
+        background-color: rgb(78, 40, 40);
+        padding:10px
+
+    }
+    .row {
+        float:left;
+        width:30%;
+    }
+   img{
+        width:90%;
+        height:300px;
+        margin-top:20px;
+        margin-right:20px;
+
+    }
+</style>
+<body>
+    <div class="nav">
+        <ul  id="filter_btns">
+            <li class="active" data-target ="all">All</li>
+            <li data-target ="book"> Book</li>
+            <li data-target = "car">Car</li>
+            <li data-target = "adventure">Adventure</li>
+
+
+        </ul>
+    </div>
+
+
+
+    <div id="parent_div">
+        <div class="row" data-id="adventure" >
+            <img src="ad1.jpg" alt="">
+        </div>
+
+
+
+ 
+        <div class="row" data-id="adventure">
+            <img src="ad2.jpg" alt="">
+        </div>
+
+
+
+        <div class="row"   data-id="car">
+            <img src="hb1.jpg" alt="">
+        </div>
+
+
+
+
+
+        <div class="row" >
+            <img src="hb2.jpg" data-id="book" alt="">
+        </div>
+
+
+        <div class="row">
+            <img src="lf1.jpg" data-id="adventure" alt="">
+        </div>
+
+
+    </div>
+
+    <script>
+        // var filter_btns = document.getElementById("filter_btns").children;
+        // var items = document.getElementById("parent_div").children;
+        // for(var i =0;i<filter_btns.length;i++){
+        //     filter_btns[i].addEventListener("click",function(){
+
+        //         for(var j =0; j<filter_btns.length;j++){
+        //             filter_btns[j].classList.remove("active");
+        //         }
+        //         this.classList.add("active");
+        //         var target =this.getAttribute("data-target");
+        //         // var dtId = this.getAttribute("data-id");
+
+        //         for(var k=0;k<items.length;k++){
+        //             items[k].style.display ="none";
+        //             if(target == items[k].getAttribute("data-id")){
+        //                 items[k].style.display ="block";
+
+        //             }
+
+        //             if(target =="all"){
+        //                 items[k].style.display ="block";
+
+        //             }
+
+
+        //         }
+
+        //     })
+        // }
+
+
+
+        var filter_btns = document.getElementById("filter_btns").children;
+        var items =document.getElementById("parent_div").children;
+        for(var i =0;i<filter_btns.length;i++){
+            filter_btns[i].addEventListener("click",function(){
+
+                for(var j =0;j<filter_btns.length;j++){
+                    filter_btns[j].classList.remove("active");
+                }
+                this.classList.add("active");
+
+                var targetCat = this.getAttribute("data-target");
+                for(var k =0; k<items.length;k++){
+                    items[k].style.display="none";
+                    if(targetCat==items[k].getAttribute("data-id") || targetCat ==="all"){
+                    items[k].style.display="block";
+                    
+                }
+                }
+              
+            })
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
